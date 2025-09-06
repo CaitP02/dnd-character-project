@@ -6,5 +6,15 @@
     "react-router-dom": "^7.8.0",
     "rpg-awesome": "^0.2.0",
     "update": "^0.7.4"
+  },
+
+  "homepage": "https://spillthekatea.github.io/dnd-character-project/",
+  "scripts": {
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d dist"
+},
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
   }
+
 }
