@@ -14,8 +14,8 @@ app.use(express.static('public'));
 mongoose.connect(mongoDBURL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log("MongoDB connected successfully");
-    const port = process.env.PORT || 5555;
-    app.listen(port, '127.0.0.1', () => {
+    const port = process.env.PORT || 3000;
+    app.listen(port, '0.0.0.0', () => {
       console.log(`Server is running on port ${port}`);
     });
   })
