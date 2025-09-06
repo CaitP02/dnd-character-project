@@ -10,6 +10,7 @@ const app = express();
 app.use(cors()); 
 app.use(express.json());
 app.use(express.static('public'));
+app.use('/dnd-character-project', express.static('public'));
 
 mongoose.connect(mongoDBURL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
