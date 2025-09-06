@@ -7,14 +7,13 @@
     "rpg-awesome": "^0.2.0",
     "update": "^0.7.4"
   },
-
   "homepage": "https://spillthekatea.github.io/dnd-character-project/",
   "scripts": {
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d dist"
-},
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
   "devDependencies": {
-    "gh-pages": "^5.0.0"
+    "gh-pages": "^5.0.0",
+    "rimraf": "^6.0.1"
   }
-
 }
