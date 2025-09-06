@@ -9,12 +9,14 @@ const app = express();
 
 app.use(cors()); 
 app.use(express.json());
+app.use(express.static('public'));
 
 mongoose.connect(mongoDBURL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log("MongoDB connected successfully");
-    app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+    const port = process.env.PORT || 5555;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
   })
   .catch(err => console.error("MongoDB connection error:", err));
