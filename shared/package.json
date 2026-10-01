@@ -1,0 +1,20 @@
+{
+  "name": "@dnd/shared",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Ability, skill, race and class lists plus dice helpers shared by the API and the web client.",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.32.0",
+    "eslint": "^9.32.0",
+    "globals": "^16.3.0",
+    "vitest": "^3.2.4"
+  }
+}

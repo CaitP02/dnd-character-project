@@ -1,2 +1,5 @@
-
-cdk*
+**/node_modules
+**/dist
+**/.env
+.git
+docs

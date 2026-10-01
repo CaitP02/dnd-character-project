@@ -1,0 +1,21 @@
+# Render Blueprint for the API: https://render.com/docs/blueprint-spec
+# The web app on Vercel proxies /api/* here (see frontend/vercel.json), so the
+# browser only ever talks to one origin and no CORS setup is needed.
+services:
+  - type: web
+    name: heros-codex-api
+    runtime: node
+    plan: free
+    region: frankfurt
+    buildCommand: npm ci --omit=dev --workspace backend --workspace @dnd/shared
+    startCommand: npm start -w backend
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false # MongoDB Atlas connection string, entered in the Render dashboard
+      - key: CORS_ORIGIN
+        sync: false # your Vercel URL, e.g. https://heros-codex.vercel.app

@@ -1,0 +1,35 @@
+# Production-like local stack: MongoDB + API + nginx-served web app.
+#   docker compose up --build        -> http://localhost:8080
+#   docker compose exec api node backend/scripts/seed.js   (optional sample characters)
+services:
+  mongo:
+    image: mongo:7
+    volumes:
+      - mongo-data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.runCommand({ ping: 1 })"]
+      interval: 5s
+      retries: 10
+
+  api:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment:
+      MONGODB_URI: mongodb://mongo:27017/dnd
+      CORS_ORIGIN: http://localhost:8080
+    depends_on:
+      mongo:
+        condition: service_healthy
+
+  web:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
+
+volumes:
+  mongo-data:
