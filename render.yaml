@@ -20,4 +20,4 @@ services:
       - key: MONGODB_URI
         sync: false # MongoDB Atlas connection string, entered in the Render dashboard
       - key: CORS_ORIGIN
-        sync: false # your Vercel URL, e.g. https://heros-codex.vercel.app
+        sync: false # your Vercel URL, e.g. https://dnd-character-project.vercel.app

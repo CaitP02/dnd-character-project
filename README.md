@@ -1,4 +1,4 @@
-# Hero's Codex
+# D&D Character Sheets
 
 An online D&D 5th Edition character sheet that looks and feels like filling in a paper one. You write your character's details straight onto the sheet, keep a pile of characters as index cards, roll dice from the sheet, and print it when you need a paper copy.
 

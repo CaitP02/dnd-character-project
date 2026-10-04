@@ -1,12 +1,12 @@
-# Hosting Hero's Codex online
+# Hosting the app online
 
-How to deploy Hero's Codex on free hosting tiers. The first deploy takes roughly an hour.
+How to deploy the app on free hosting tiers. The first deploy takes roughly an hour.
 
 ## The setup
 
 ```mermaid
 flowchart LR
-  B[Visitor's browser] -->|https://heros-codex.vercel.app| V[Vercel<br/>React app + /api proxy]
+  B[Visitor's browser] -->|https://dnd-character-project.vercel.app| V[Vercel<br/>React app + /api proxy]
   V -->|/api/* rewrite| R[Render<br/>Express API]
   R --> A[(MongoDB Atlas<br/>free M0 cluster)]
 ```
@@ -16,7 +16,7 @@ flowchart LR
 | Web app | **Vercel** (Hobby) | Free | Serves the built React app and proxies `/api` to Render |
 | API | **Render** (Free web service) | Free | Runs the Express API, configured by `render.yaml` |
 | Database | **MongoDB Atlas** (M0) | Free | 512 MB, which is plenty for this app |
-| Custom domain | Any registrar (optional) | ~£10/year | Only if you want e.g. `heroscodex.dev` |
+| Custom domain | Any registrar (optional) | ~£10/year | Only if you want your own address instead of `*.vercel.app` |
 
 The browser only talks to the Vercel address, and Vercel forwards `/api/*` requests to Render, so no CORS configuration is needed.
 
@@ -61,7 +61,7 @@ Render's free tier sleeps after 15 minutes without traffic, and the next request
 2. **New → Blueprint** → select the repo. Render reads `render.yaml` and proposes a service named **heros-codex-api**.
 3. Fill in the values it asks for:
    - `MONGODB_URI`: the Atlas string from Step 1.
-   - `CORS_ORIGIN`: put `https://heros-codex.vercel.app` for now; you will confirm it in Step 4. (It's only used if something calls the API directly instead of through Vercel.)
+   - `CORS_ORIGIN`: put `https://<vercel-project-name>.vercel.app` for now; you will confirm it in Step 4. (It's only used if something calls the API directly instead of through Vercel.)
 4. **Apply**. The first build takes a few minutes. When it is live, open
    `https://heros-codex-api.onrender.com/api/health`: it should show `{"status":"ok"}`.
    - If Render gave the service a different URL (e.g. `heros-codex-api-ab12.onrender.com`), note it for Step 3.
@@ -78,7 +78,7 @@ Render's free tier sleeps after 15 minutes without traffic, and the next request
 2. Sign up at <https://vercel.com> with GitHub → **Add New… → Project** → import the repo.
 3. Set **Root Directory** to `frontend`. Leave the framework and commands alone: `frontend/vercel.json` already sets them (it installs from the repo root so the shared package is included).
 4. **Do not** set `VITE_API_URL`; the proxy makes it unnecessary.
-5. **Deploy**. Vercel shows your URL, for example `https://heros-codex.vercel.app`. You can rename the project under *Settings → General* to get a nicer address.
+5. **Deploy**. Vercel shows your URL, for example `https://dnd-character-project.vercel.app`. You can rename the project under *Settings → General* to get a nicer address.
 
 ## Step 4: Connect and check
 
