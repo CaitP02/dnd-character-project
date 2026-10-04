@@ -23,6 +23,8 @@ The browser only talks to the Vercel address, and Vercel forwards `/api/*` reque
 Render's free tier sleeps after 15 minutes without traffic, and the next request takes 30 to 60 seconds. The app shows a message while it waits. See [Cold starts](#cold-starts) for options.
 
 > **There is no login.** Anyone who has the link can view, edit and delete every character. That is fine for a portfolio demo, but don't store anything you would mind losing, and see [Resetting the demo data](#resetting-the-demo-data).
+>
+> To stop one visitor flooding the database, each IP address can make 60 creates, edits or deletes every 15 minutes. Reads are not limited. Change this with `WRITE_RATE_LIMIT` on Render.
 
 ---
 
@@ -133,4 +135,5 @@ Because anyone with the link can change things, you may want to reset the charac
 | Every request fails with 404 on `/api/...` | Vercel rewrite points to the wrong Render URL | Fix the destination in `frontend/vercel.json`, push |
 | "Cannot reach the server" on first visit | Render is waking up | Wait a minute and retry; consider an uptime monitor |
 | Render logs show `MongoServerSelectionError` | Atlas network access or wrong password | Allow `0.0.0.0/0` in Atlas; re-copy the connection string |
+| Every visitor gets "Too many changes" at once | `TRUST_PROXY` is wrong, so all visitors share one IP | Check `TRUST_PROXY` is `2` on Render; if it keeps happening, try `3` |
 | Build fails on Vercel with "Cannot find module '@dnd/shared'" | Install ran inside `frontend` only | Keep the `installCommand` from `frontend/vercel.json`; Root Directory must be `frontend` |

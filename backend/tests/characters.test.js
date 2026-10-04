@@ -156,3 +156,18 @@ describe('listing', () => {
     expect(res.body.data.map((c) => c.level)).toEqual([7, 5, 3, 2]);
   });
 });
+
+describe('write rate limit', () => {
+  it('rejects writes past the limit but still allows reads', async () => {
+    const limited = request(createApp({ writeLimit: 2 }));
+
+    expect((await limited.post('/api/characters').send(sheet())).status).toBe(201);
+    expect((await limited.post('/api/characters').send(sheet())).status).toBe(201);
+
+    const blocked = await limited.post('/api/characters').send(sheet());
+    expect(blocked.status).toBe(429);
+    expect(blocked.body.error.message).toMatch(/too many changes/i);
+
+    expect((await limited.get('/api/characters')).status).toBe(200);
+  });
+});

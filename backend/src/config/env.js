@@ -16,6 +16,11 @@ export const env = {
     .split(',')
     .map((origin) => origin.trim())
     .filter(Boolean),
+  // Number of proxies in front of the API (Vercel + Render in production), so
+  // the rate limiter sees the visitor's IP rather than the proxy's.
+  trustProxy: Number(process.env.TRUST_PROXY ?? 0),
+  // Creates, edits and deletes allowed per visitor every 15 minutes
+  writeLimit: Number(process.env.WRITE_RATE_LIMIT ?? 60),
   get mongoUri() {
     return required('MONGODB_URI');
   },

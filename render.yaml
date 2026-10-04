@@ -15,6 +15,8 @@ services:
         value: "22"
       - key: NODE_ENV
         value: production
+      - key: TRUST_PROXY
+        value: "2" # Vercel's proxy, then Render's load balancer
       - key: MONGODB_URI
         sync: false # MongoDB Atlas connection string, entered in the Render dashboard
       - key: CORS_ORIGIN
