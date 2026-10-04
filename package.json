@@ -1,19 +1,25 @@
 {
-  "dependencies": {
-    "gem": "^2.4.3",
-    "mongodb": "^6.18.0",
-    "mongoose": "^8.17.1",
-    "react-router-dom": "^7.8.0",
-    "rpg-awesome": "^0.2.0",
-    "update": "^0.7.4"
+  "name": "dnd-character-forge",
+  "private": true,
+  "version": "2.0.0",
+  "description": "Full-stack D&D 5e character builder with a rules engine, interactive character sheet and dice roller.",
+  "license": "MIT",
+  "type": "module",
+  "workspaces": [
+    "shared",
+    "backend",
+    "frontend"
+  ],
+  "engines": {
+    "node": ">=20.19"
   },
-  "homepage": "https://spillthekatea.github.io/dnd-character-project/",
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "dev": "concurrently -n api,web -c blue,magenta \"npm run dev -w backend\" \"npm run dev -w frontend\"",
+    "build": "npm run build -w frontend",
+    "lint": "npm run lint --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present"
   },
   "devDependencies": {
-    "gh-pages": "^6.3.0",
-    "rimraf": "^6.0.1"
+    "concurrently": "^9.2.0"
   }
 }

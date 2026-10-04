@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-
-cdk*
-=======
-fly.toml
-Dockerfile
-.dockerignore
-node_modules
+**/node_modules
+**/dist
+**/.env
 .git
->>>>>>> aee8e55cb9dce2fd983df0fe0658ee0b4c150e88
+docs
