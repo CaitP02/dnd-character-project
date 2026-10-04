@@ -68,7 +68,7 @@ const SheetEditor = ({ character }) => {
       <div className="no-print mb-4 flex flex-wrap items-center justify-between gap-3">
         <Link to="/" className="text-lg tracking-[0.04em] text-paper/80 hover:text-paper">← All characters</Link>
         <div className="flex flex-wrap items-center gap-3">
-          {dirty && <span className="font-hand text-lg text-paper/80">unsaved changes</span>}
+          {dirty && <span className="text-lg text-paper/80">unsaved changes</span>}
           <button type="submit" className="btn-dark" disabled={saving}>{saving ? 'Saving…' : 'Save'}</button>
           <button type="button" className="btn" onClick={() => window.print()}>Print / PDF</button>
           {character && <button type="button" className="btn-red" onClick={() => setConfirmDelete(true)}>Delete</button>}

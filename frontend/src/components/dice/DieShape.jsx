@@ -36,8 +36,8 @@ const DieShape = ({ sides, value, size = 56, kept = true, className = '', style 
         x="50"
         y={shape.textY}
         textAnchor="middle"
-        fontFamily="MedievalSharp, Georgia, serif"
         fontSize={fontSize}
+        fontWeight="700"
         fill="#8b1e17"
       >
         {label}

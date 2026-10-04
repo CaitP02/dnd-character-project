@@ -28,7 +28,7 @@ const TextArea = ({ label, value, onChange, rows, placeholder, className = '' })
 const CharacterSheetForm = ({ sheet, set, roll, nameError }) => (
   <div className="paper rounded-sm px-4 py-6 sm:px-8">
     <div className="mb-5 flex flex-wrap items-end justify-between gap-2 border-b-4 border-double border-ink/85 pb-1">
-      <p className="text-3xl leading-none sm:text-4xl" style={{ fontFamily: 'var(--font-fantasy)' }}>Character Record Sheet</p>
+      <p className="text-3xl leading-none font-black tracking-tight uppercase sm:text-4xl">Character Record Sheet</p>
       <p className="label">For use with fifth edition rules</p>
     </div>
 
@@ -42,7 +42,7 @@ const CharacterSheetForm = ({ sheet, set, roll, nameError }) => (
           inputClassName="text-3xl"
           aria-invalid={Boolean(nameError)}
         />
-        {nameError && <p className="font-hand text-lg text-redpen" role="alert">{nameError}</p>}
+        {nameError && <p className="text-lg text-redpen" role="alert">{nameError}</p>}
       </div>
       <div className="box grid grid-cols-2 gap-x-4 gap-y-2 px-3 py-2 sm:grid-cols-4">
         <PickOrOther label="Class" options={CLASSES} value={sheet.characterClass} onChange={(v) => set('characterClass', v)} />
@@ -50,14 +50,13 @@ const CharacterSheetForm = ({ sheet, set, roll, nameError }) => (
         <LineField label="Background" value={sheet.background} maxLength={60} onChange={(v) => set('background', v)} />
         <LineField label="Player name" value={sheet.playerName} maxLength={60} onChange={(v) => set('playerName', v)} />
         <PickOrOther label="Race" options={RACES} value={sheet.race} onChange={(v) => set('race', v)} />
-        <LineField label="Alignment" value={sheet.alignment} maxLength={30} onChange={(v) => set('alignment', v)} />
+        <LineField label="Alignment" value={sheet.alignment} maxLength={30} onChange={(v) => set('alignment', v)} className="col-span-2" />
         <LineField
           label="Experience points"
           type="number"
           min={0}
           value={sheet.experiencePoints}
           onChange={(v) => set('experiencePoints', v)}
-          className="col-span-2"
         />
       </div>
     </header>

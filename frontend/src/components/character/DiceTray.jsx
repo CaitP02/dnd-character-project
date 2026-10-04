@@ -72,7 +72,7 @@ const Board = ({ roller, boardRef, highlight }) => {
       className={`tray-felt flex min-h-[12rem] flex-col p-3 transition ${highlight ? 'outline-2 outline-offset-[-6px] outline-dashed outline-[#ece8dc]/70' : ''}`}
     >
       {dice.length === 0 ? (
-        <p className="m-auto max-w-[13rem] text-center font-hand text-lg leading-snug text-[#e8e4d8]/75">
+        <p className="m-auto max-w-[13rem] text-center text-lg leading-snug text-[#e8e4d8]/75">
           Drag dice onto the felt, then press Roll.
         </p>
       ) : (
@@ -103,7 +103,7 @@ const Board = ({ roller, boardRef, highlight }) => {
       )}
 
       {(pool.length > 0 || rolled) && (
-        <div className="mt-2 flex items-end justify-between gap-2 font-hand text-[#ece8dc]" aria-live="polite">
+        <div className="mt-2 flex items-end justify-between gap-2 text-[#ece8dc]" aria-live="polite">
           <div className="min-w-0">
             <p className="truncate text-lg leading-tight">{latest?.label ?? roller.label ?? describePool(pool, Number(roller.modifier) || 0)}</p>
             {rolled && (
@@ -117,7 +117,7 @@ const Board = ({ roller, boardRef, highlight }) => {
         </div>
       )}
       {rolled?.critical && (
-        <p className={`text-center font-hand text-xl ${rolled.critical === 'success' ? 'text-[#f2d77a]' : 'text-[#f0a296]'}`}>
+        <p className={`text-center text-xl ${rolled.critical === 'success' ? 'text-[#f2d77a]' : 'text-[#f0a296]'}`}>
           {rolled.critical === 'success' ? 'Natural 20!' : 'Natural 1…'}
         </p>
       )}
@@ -150,17 +150,17 @@ const DiceTray = ({ roller }) => {
           <input
             type="number"
             aria-label="Bonus to add to the roll"
-            className="hand w-12 border-b-[1.5px] border-ink text-center"
+            className="hand w-10 border-b-[1.5px] border-ink text-center"
             value={roller.modifier}
             onChange={(e) => roller.setModifier(e.target.value)}
           />
         </label>
         <div className="flex gap-2">
-          <button type="button" className="btn px-3" onClick={roller.clearBoard} disabled={roller.pool.length === 0}>Clear</button>
+          <button type="button" className="btn px-2.5" onClick={roller.clearBoard} disabled={roller.pool.length === 0}>Clear</button>
           <button
             ref={rollButtonRef}
             type="button"
-            className="btn-dark px-4 text-lg"
+            className="btn-dark px-2.5"
             onClick={roller.roll}
             disabled={roller.pool.length === 0}
           >
@@ -213,7 +213,7 @@ const DiceTray = ({ roller }) => {
             <h3 className="label">Earlier rolls</h3>
             <button type="button" className="label cursor-pointer hover:text-redpen" onClick={roller.clearHistory}>clear</button>
           </div>
-          <ol className="mt-1 max-h-48 overflow-y-auto font-hand text-lg">
+          <ol className="mt-1 max-h-48 overflow-y-auto text-lg">
             {roller.history.slice(1).map((entry) => (
               <li key={entry.id} className="flex justify-between gap-2 border-b border-ink/20 text-pencil">
                 <span className="truncate">{entry.label}</span>

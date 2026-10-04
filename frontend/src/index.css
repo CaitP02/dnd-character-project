@@ -2,10 +2,7 @@
 
 /* A paper character sheet on a table in a wood-panelled basement, circa 1994. */
 @theme {
-  --font-hand: "Patrick Hand", "Comic Sans MS", cursive;
-  --font-print: "IM Fell English SC", Georgia, serif;
-  --font-fantasy: "MedievalSharp", Georgia, serif;
-  --font-sans: "IM Fell English SC", Georgia, serif;
+  --font-sans: "Archivo", "Helvetica Neue", Arial, sans-serif;
 
   --color-wood-900: #1d1109;
   --color-wood-800: #2b190d;
@@ -24,7 +21,8 @@
 @layer base {
   body {
     @apply min-h-screen text-ink;
-    font-family: var(--font-print);
+    font-family: var(--font-sans);
+    font-variant-numeric: tabular-nums;
     background-color: var(--color-wood-800);
     background-image:
       radial-gradient(ellipse 65% 45% at 50% -8%, rgb(255 228 190 / 0.18), transparent 70%),
@@ -60,10 +58,8 @@
 /* Pencil on paper */
 @utility hand {
   @apply w-full bg-transparent text-pencil outline-none placeholder:text-ink/30;
-  font-family: var(--font-hand);
-  font-size: 1.3rem;
-  line-height: 1.2;
-  text-shadow: 0 0 0.6px rgb(69 64 58 / 0.55);
+  font-size: 1.15rem;
+  line-height: 1.3;
 
   &:focus {
     background: color-mix(in srgb, var(--color-highlighter) 45%, transparent);
@@ -71,8 +67,7 @@
 }
 
 @utility btn {
-  @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-sm border-2 border-ink bg-paper px-4 py-1 text-base tracking-[0.04em] text-ink transition select-none hover:-translate-y-px disabled:cursor-not-allowed disabled:opacity-50;
-  font-family: var(--font-print);
+  @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-sm border-2 border-ink bg-paper px-4 py-1 text-base font-bold tracking-[0.02em] text-ink transition select-none hover:-translate-y-px disabled:cursor-not-allowed disabled:opacity-50;
   box-shadow: 3px 3px 0 rgb(0 0 0 / 0.55);
 
   &:active {
@@ -90,15 +85,13 @@
 
   /* Printed label, as on a photocopied form */
   .label {
-    @apply block text-[0.8rem] leading-tight tracking-[0.04em] text-ink/85;
-    font-family: var(--font-print);
-    text-shadow: 0 0 0.5px rgb(42 35 27 / 0.6);
+    @apply block text-[0.7rem] leading-tight font-medium tracking-[0.06em] uppercase text-ink/85;
+    font-stretch: 87.5%;
   }
 
   /* Black header bar printed across a section */
   .bar {
-    @apply px-2 py-0.5 text-center text-sm tracking-[0.06em] text-paper;
-    font-family: var(--font-fantasy);
+    @apply px-2 py-0.5 text-center text-sm font-bold tracking-[0.06em] uppercase text-paper;
     background-color: var(--color-ink);
   }
 
@@ -230,7 +223,7 @@
 
 /* notistack toasts as scraps of paper */
 .notistack-MuiContent {
-  font-family: var(--font-hand) !important;
+  font-family: var(--font-sans) !important;
   font-size: 1.2rem !important;
   color: var(--color-ink) !important;
   background: var(--color-card) !important;

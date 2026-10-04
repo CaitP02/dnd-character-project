@@ -115,7 +115,7 @@ export const AbilityBox = ({ ability, value, onChange, onRoll }) => {
       />
       <div className="mb-2 flex items-center gap-1">
         <span
-          className="flex h-7 min-w-12 items-center justify-center rounded-full border-[1.5px] border-ink px-2 font-hand text-xl text-pencil"
+          className="flex h-7 min-w-12 items-center justify-center rounded-full border-[1.5px] border-ink px-2 text-xl text-pencil"
           aria-label={`${ability.name} modifier`}
         >
           {formatModifier(modifier)}

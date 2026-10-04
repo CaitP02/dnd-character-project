@@ -23,7 +23,7 @@ const ConfirmDelete = ({ character, onClose, onDeleted }) => {
 
   return (
     <Modal open={Boolean(character)} title={`Delete ${character?.name}?`} onClose={busy ? () => {} : onClose}>
-      <p className="font-hand text-xl text-pencil">
+      <p className="text-xl text-pencil">
         This throws the sheet away for good. It cannot be undone.
       </p>
       <div className="mt-6 flex justify-end gap-3">

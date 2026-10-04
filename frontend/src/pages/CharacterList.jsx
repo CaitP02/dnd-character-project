@@ -15,14 +15,14 @@ const summary = (c) => [c.level && `Level ${c.level}`, c.race, c.characterClass]
 
 const Stat = ({ label, value }) => (
   <span>
-    <span className="text-xs tracking-widest uppercase" style={{ fontFamily: 'var(--font-print)' }}>{label}</span>{' '}
+    <span className="text-xs tracking-widest uppercase">{label}</span>{' '}
     <span className="text-xl">{value ?? '—'}</span>
   </span>
 );
 
 const IndexCard = ({ character }) => (
-  <Link to={`/characters/${character._id}`} className="index-card font-hand">
-    <h2 className="truncate text-3xl leading-[34px]">{character.name}</h2>
+  <Link to={`/characters/${character._id}`} className="index-card">
+    <h2 className="truncate text-3xl leading-[34px] font-semibold">{character.name}</h2>
     <p className="mt-2 truncate text-xl leading-[27px]">{summary(character)}</p>
     <p className="flex gap-5 leading-[27px]">
       <Stat label="HP" value={character.hitPoints?.max} />
