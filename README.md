@@ -4,7 +4,7 @@ An online D&D 5th Edition character sheet that looks and feels like filling in a
 
 Built with React 19, Vite, Tailwind CSS 4, Express 5, MongoDB (Mongoose) and Vitest.
 
-Live demo: coming soon (see [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)).
+**Live demo: [dnd-character-project.vercel.app](https://dnd-character-project.vercel.app)** (hosted on free tiers, so the first load after a quiet spell can take up to a minute while the API wakes up)
 
 ![Character sheet](docs/screenshots/sheet.jpg)
 
