@@ -26,10 +26,7 @@ const TextArea = ({ label, value, onChange, rows, placeholder, className = '' })
  * `roll(label, modifier)` puts a d20 check on the dice board, ready to roll.
  */
 const CharacterSheetForm = ({ sheet, set, roll, nameError }) => (
-  <div className="paper coffee-ring rounded-sm px-4 py-6 sm:px-8">
-    <span className="tape -top-3 left-8 -rotate-6" aria-hidden="true" />
-    <span className="tape -top-3 right-8 rotate-3" aria-hidden="true" />
-
+  <div className="paper rounded-sm px-4 py-6 sm:px-8">
     <div className="mb-5 flex flex-wrap items-end justify-between gap-2 border-b-4 border-double border-ink/85 pb-1">
       <p className="text-3xl leading-none sm:text-4xl" style={{ fontFamily: 'var(--font-fantasy)' }}>Character Record Sheet</p>
       <p className="label">For use with fifth edition rules</p>

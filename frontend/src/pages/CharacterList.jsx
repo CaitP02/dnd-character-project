@@ -69,7 +69,6 @@ const CharacterList = () => {
   return (
     <div className="space-y-8">
       <section aria-label="Search and filter" className="paper grid gap-4 rounded-sm px-5 py-4 sm:grid-cols-[2fr_1fr_1fr_1fr]">
-        <span className="tape -top-3 left-10 -rotate-3" aria-hidden="true" />
         <label className="flex flex-col">
           <span className="label">Search by name</span>
           <input

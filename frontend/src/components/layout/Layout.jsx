@@ -9,8 +9,7 @@ const Layout = () => (
       Skip to content
     </a>
     <header className="no-print">
-      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 py-5">
-        <Link to="/" className="dymo" aria-label="Hero's Codex home">Hero&apos;s Codex</Link>
+      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-end gap-4 px-4 py-5">
         <nav className="flex items-center gap-5" aria-label="Main">
           <NavLink to="/" end className={navClass}>All characters</NavLink>
           <Link to="/characters/new" className="btn">New sheet</Link>
